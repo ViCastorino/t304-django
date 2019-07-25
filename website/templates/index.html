@@ -1,5 +1,31 @@
 {%extends 'shared/layout.html'%}
 
 {%block conteudo%}
+
 <h2>django</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Nome</label>
+        <input type="text" name="nome">
+
+        <label>Sobrenome</label>
+        <input type="text" name="sobrenome">
+
+        <label>E-mail</label>
+        <input type="text" name="email">
+
+        <label>Gênero</label>
+        <select name="genero">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+        </select>
+
+        <label> Vai na fe </label>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+{% include 'shared/teste.html'%}
+
 {%endblock%}
