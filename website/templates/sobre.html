@@ -2,8 +2,13 @@
 
 {%block conteudo%}
 
-<h1>Aplication em django</h1>
+<h1>Lista de pessoinhas</h1>
 
-{% include 'shared/teste.html'%}
+<!-- {% include 'shared/teste.html'%} -->
+<ul>
+{% for pessoa in pessoas %}
+        <li>{{pessoa.nome}} {{pessoa.sobrenome}}</li>
+{{% endfor %}}
+</ul>
 
-{%endblock%}
+{% endblock %}

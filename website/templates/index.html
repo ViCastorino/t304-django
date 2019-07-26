@@ -2,8 +2,8 @@
 
 {%block conteudo%}
 
-<h2>django</h2>
-
+<h2>Ideas Malucas</h2>
+{{msg}}
     <form action="" method="post">
         {% csrf_token %}
         <label>Nome</label>
@@ -22,10 +22,13 @@
             <option value="O">Outro</option>
         </select>
 
-        <label> Vai na fe </label>
+        <label>Biografia</label>
+        <textarea name="biografia" cols="30" rows="10"></textarea>
+        
+        <label>Thanks for it!</label>
         <input type="submit" value="Cadastrar">
     </form>
 
-{% include 'shared/teste.html'%}
+<!-- {% include 'shared/teste.html'%} -->
 
 {%endblock%}
