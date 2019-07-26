@@ -14,7 +14,7 @@ def index(request):
         pessoa.genero = request.POST.get('genero')
         pessoa.biografia = request.POST.get('biografia')
         pessoa.save()
-        args('msg': 'usuario cadastrado')
+        args = {'msg': 'usuario cadastrado'}
 
     return render(request, 'index.html', args)
 
@@ -24,3 +24,6 @@ def sobre(request):
         'pessoas':pessoa
     }
     return render(request, 'sobre.html', args)
+
+def login(request):
+      
