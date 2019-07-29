@@ -1,13 +1,24 @@
 body{
-    background-color: aqua;
+    background-color: wheat;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    color: rgb(128 0 0);
+    font-size: 22px;
 }
 form{
     width: 35%;
     height: 100%;
     display: flex;
     flex-direction: column;
+}
+.listinha{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.titulo{
+    margin: 0;
+    padding: 0;
 }

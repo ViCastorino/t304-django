@@ -35,7 +35,7 @@ class Pessoa(models.Model):
         blank = True
     )
 
-    data_de_criacao = models.DateTimeField( auto_now_add=True )
+    data_de_criacao = models.DateTimeField( auto_now_add=True    )
     ativo = models.BooleanField(default=True)
 
     def __str__(self):

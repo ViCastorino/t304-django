@@ -20,15 +20,15 @@ def index(request):
     return render(request, 'index.html', args)
 
 def sobre(request):
-    ideias = Ideias.objects.all()
+    ideias = Ideias.objects.filter(ativo=True).all()
     args = {
-        'pessoas':ideias
+        'ideias':ideias
     }
     return render(request, 'sobre.html', args)
 
 def login(request):
     #conferir se cadastrado, retornar para sobre, senaao retornar para cadastro
-    if req.method == 'POST':
+    if request.method == 'POST':
         email_form = request.POST.get('email')
         pessoa = Pessoa.objects.filter(email=email_form).first()
 
@@ -46,6 +46,9 @@ def login(request):
     return render(request, 'login.html', {})        
 
 def cadastrar_ideia(request):
+    args = {
+
+    }
     if request.method == 'POST':
         email_pessoa = request.POST.get('email')
         pessoa = Pessoa.objects.filter(email=email_pessoa).first()
@@ -55,18 +58,22 @@ def cadastrar_ideia(request):
             ideia.pessoa = pessoa
             ideia.titulo = request.POST.get('titulo')
             ideia.descricao = request.POST.get('descricao')
-            ideia.categoria = request.POST.get('categoria')
+            ideia.categorias = request.POST.get('categorias')
             ideia.categoria_outros = request.POST.get('categoria_outros')
             ideia.save()
             print('yeaah')
-
             return redirect('/sobre')
 
     return render(request, 'ideias.html', {})
 
-
-
-
+def deletar_ideia(request, id):
+    ideia = Ideias.objects.filter(id=id).first()
+    if ideia is not None:
+        ideia.ativo = False
+        ideia.save()
+        # args = {'msg': 'Sua ideia foi apagada cara'} 
+        return redirect('/sobre')
+    return render(request, 'sobre.html', {'msg': 'Error404'})        
 
 
 
