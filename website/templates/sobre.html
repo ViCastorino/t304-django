@@ -1,14 +1,16 @@
-{%extends 'shared/layout.html'%}
-
-{%block conteudo%}
+{% extends 'shared/layout.html' %}
+{% block conteudo %}
 
 <h1>Lista de pessoinhas</h1>
-
+<p>
+        {% for ideia in ideias %}
+                <p>{{ideia.pessoa.nome}}</p>
+                <p>{{ideia.titulo}}</p>
+                <p>{{ideia.categoria}}</p>
+                <p>{{ideia.descricao}}</p>
+                <hr>               
+        {{% endfor %}}
+</p>
 <!-- {% include 'shared/teste.html'%} -->
-<ul>
-{% for pessoa in pessoas %}
-        <li>{{pessoa.nome}} {{pessoa.sobrenome}}</li>
-{{% endfor %}}
-</ul>
 
 {% endblock %}

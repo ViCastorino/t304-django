@@ -1,8 +1,9 @@
-(from django.urls import path, include
-from . import views, sobre, login
+from django.urls import path, include
+from website.views import index, sobre, login, cadastrar_ideia
 
 urlpatterns = [
-    path('', views.index),
-    path('sobre', views.sobre)
-    path('login',login)
+    path('', index),
+    path('sobre', sobre),
+    path('login', login),
+    path('ideias', cadastrar_ideia)
 ]

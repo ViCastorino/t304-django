@@ -21,7 +21,7 @@ class Pessoa(models.Model):
 
     genero = models.CharField(
         max_length=255,
-        verbose_name='Gêneros',
+        verbose_name='Gênero',
         choices=GENEROS
     )
 
@@ -35,6 +35,9 @@ class Pessoa(models.Model):
         blank = True
     )
 
+    data_de_criacao = models.DateTimeField( auto_now_add=True )
+    ativo = models.BooleanField(default=True)
+
     def __str__(self):
         return self.nome + ' ' + self.sobrenome     
 
@@ -45,7 +48,7 @@ class Ideias(models.Model):
         ('CONTRA_GROGER','Ideias para Coach Groger'),
         ('CONTRA_JOAO','Ideias contra Joao'),
         ('PÚBLICAS','Públicas'),
-        ('OUTROS','Outros')
+        ('OUTROS','Outros'),
     )
     
     
@@ -56,29 +59,31 @@ class Ideias(models.Model):
     
     titulo = models.CharField(
         max_length=255,
-        verbose_name ="Nome da ideia",
+        verbose_name ='Nome da ideia',
         unique=True
     )
 
     descricao = models.TextField(
-        verbose_name="Descreva sua ideia"
+        verbose_name='Descreva sua ideia'
     )
 
     categorias = models.CharField(
-        verbose_name="Categorias",
+        verbose_name='Categorias',
         choices = CATEGORIAS,
         max_length=255
     )
 
-    categorias_outros = models.CharField(
+    categoria_outros = models.CharField(
         null=True,
         blank=True,
         max_length=255,
-        verbose_name="Caso outros, qual então?"
+        verbose_name='Caso outros, qual então?'
     )
 
     data_de_atualizacao = models.DateTimeField(auto_now=True)
     data_de_criacao = models.DateTimeField( auto_now_add=True )
     ativo = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.pessoa.nome + ' - ' + self.titulo    
 
